@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투표 작성 페이지</title>
+</head>
+<body>
+<header>
+    <h1>투표 작성 페이지</h1>
+</header>
+
+<main>
+    <form action="/vote/create" method="post">
+
+        <div class="poll-title">
+            <label for="title">투표 제목:</label>
+            <input type="text" id="title" name="title" placeholder="투표 제목을 입력하세요." required>
+        </div>
+
+
+        <div class="poll-options">
+            <h2>투표 항목 입력</h2>
+            <ul id="optionsList">
+                <li>
+                    <input type="text" name="content" class="option" placeholder="항목 이름을 입력하세요." required>
+                    <button type="button" onclick="removeOption(this)">–</button>
+                </li>
+            </ul>
+            <button type="button" onclick="addOption()">+</button>
+        </div>
+
+
+        <div class="submit-button">
+            <button type="submit">완료</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    function addOption() {
+        const optionsList = document.getElementById("optionsList");
+        const newOption = document.createElement("li");
+        newOption.innerHTML = `
+            <input type="text" name="content" class="option" placeholder="항목 이름을 입력하세요." required>
+            <button type="button" onclick="removeOption(this)">–</button>
+        `;
+        optionsList.appendChild(newOption);
+    }
+
+    function removeOption(button) {
+        const optionItem = button.parentElement;
+        optionItem.remove();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>투표 검색 결과</title>
+</head>
+<body>
+<div class="container">
+    <h2>검색 결과</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vote : ${votes}">
+            <td th:text="${vote.id}"></td>
+            <td th:text="${vote.title}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class="back-to-list">
+        <button type="button" onclick="location.href='/vote/main'">목록으로 돌아가기</button>
+    </div>
+</div>
+</body>
+</html>

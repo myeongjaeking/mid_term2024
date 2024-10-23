@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+
+        <div class="search-bar">
+            <form action="#" th:action="@{/vote/search}" method="get">
+                <input type="text" name="keyword" placeholder="키워드를 입력하세요" required />
+                <button type="submit">검색</button>
+            </form>
+        </div>
+
+
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>제목</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vote : ${votes}">
+                <td th:text="${vote.id}"></td>
+                <td th:text="${vote.title}"></td>
+
+
+                <td>
+
+                    <a th:if="${reVoteableVotes.contains(vote)}" th:href="@{/vote/vote/{id}(id=${vote.id})}" class="text-warning">재투표 가능</a>
+                    <a th:if="${!reVoteableVotes.contains(vote)}" th:href="@{/vote/vote/{id}(id=${vote.id})}" class="btn btn-primary">투표</a>
+                </td>
+
+
+
+                <td th:if="${vote.member.id == member.id}">
+                    <a th:href="@{/vote/delete/{id}(id=${vote.id})}">삭제</a>
+                </td>
+
+
+                <td>
+                    <a th:href="@{/vote/result/{id}(id=${vote.id})}">투표 결과</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="create-poll">
+        <button type="button" onclick="location.href='/vote/create'">투표 작성</button>
+    </div>
+
+
+    <div class="logout">
+        <button type="button" onclick="location.href='/'">로그아웃</button>
+    </div>
+</div>
+</body>
+</html>
