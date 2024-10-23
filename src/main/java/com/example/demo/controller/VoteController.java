@@ -97,7 +97,7 @@ public class VoteController {
 
             model.addAttribute("reVoteableVotes", reVoteableVotes);
         }
-        return "vote/list";
+        return "votelist";
     }
 
     @GetMapping("main")
@@ -133,7 +133,7 @@ public class VoteController {
             model.addAttribute("vote", vote);
             model.addAttribute("itemVoteCounts", itemVoteCounts);
 
-            return "/vote/result";
+            return "vote/result";
         }
         return null;
     }
@@ -155,7 +155,7 @@ public class VoteController {
             model.addAttribute("memberVote",memberVote);
             model.addAttribute("member",member);
             model.addAttribute("vote",vote);
-            return "/vote/vote";
+            return "vote/vote";
         }
         return null;
     }

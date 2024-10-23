@@ -28,12 +28,13 @@ public class MemberController {
             return "member/signUpError";
         }
 
-        return "redirect:/main";
+        return "redirect:main";
     }
     @GetMapping("/member/signUpError")
     public String loginError(){
         return "member/signUpError";
     }
+
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberRequest memberRequest, HttpSession httpSession){
         Member member = memberRepostiory.findMemberByUserName(memberRequest.getUserName());
