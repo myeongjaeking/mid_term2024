@@ -12,17 +12,17 @@
 </header>
 
 <main>
-    <!-- 1. 검색 창 -->
+
     <div class="search-container">
         <input type="text" id="search" placeholder="검색어를 입력하세요.">
         <button type="button" id="searchButton">검색</button>
     </div>
 
-    <!-- 2. 현재까지 작성된 투표 목록 -->
+
     <div class="poll-list">
         <h2>투표 목록</h2>
         <ul>
-            <!-- 예시 투표 항목 -->
+
             <li>
                 <span>투표 제목 1</span>
                 <button onclick="vote(1)">투표하기</button>
@@ -35,16 +35,16 @@
                 <button onclick="viewResults(2)">투표 결과 보기</button>
                 <button onclick="deletePoll(2)">삭제</button>
             </li>
-            <!-- 다른 투표 항목은 동적으로 추가될 수 있습니다. -->
+
         </ul>
     </div>
 
-    <!-- 3. 새로운 투표 항목 추가 버튼 -->
+
     <div class="create-poll">
         <button type="button" onclick="location.href='poll/create'">투표 작성</button>
     </div>
 
-    <!-- 4. Logout 버튼 -->
+
     <div class="logout">
         <button type="button" onclick="location.href='member/logout'">Logout</button>
     </div>
@@ -52,20 +52,20 @@
 
 <script>
     function vote(pollId) {
-        // 투표하기 기능 구현
+
         alert("투표하기: " + pollId);
     }
 
     function viewResults(pollId) {
-        // 투표 결과 보기 기능 구현
+
         alert("투표 결과 보기: " + pollId);
     }
 
     function deletePoll(pollId) {
-        // 삭제 기능 구현
+
         if (confirm("이 투표를 삭제하시겠습니까?")) {
             alert("삭제되었습니다: " + pollId);
-            // 삭제 로직 추가
+
         }
     }
 </script>

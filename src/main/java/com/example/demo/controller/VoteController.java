@@ -97,7 +97,7 @@ public class VoteController {
 
             model.addAttribute("reVoteableVotes", reVoteableVotes);
         }
-        return "votelist";
+        return "vote/list";
     }
 
     @GetMapping("main")

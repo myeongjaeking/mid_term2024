@@ -19,16 +19,18 @@ public class MemberController {
         return "member/signUp";
     }
     @PostMapping("/member/signUp")
-    public String create(@ModelAttribute MemberRequest memberRequest){
+    public String create(@ModelAttribute MemberRequest memberRequest,HttpSession httpSession){
         Member member = memberRepostiory.findMemberByUserName(memberRequest.getUserName());
         if(member == null){
             memberService.create(memberRequest);
+            Member newMember = memberRepostiory.findMemberByUserName(memberRequest.getUserName());
+            httpSession.setAttribute("loginMember", newMember);
         }
         else{
             return "member/signUpError";
         }
 
-        return "redirect:main";
+        return "redirect:/main";
     }
     @GetMapping("/member/signUpError")
     public String loginError(){
