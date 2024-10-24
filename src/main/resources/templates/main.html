@@ -11,13 +11,11 @@
             </form>
         </div>
 
-
         <table>
             <thead>
             <tr>
                 <th>#</th>
                 <th>제목</th>
-
             </tr>
             </thead>
             <tbody>
@@ -25,32 +23,40 @@
                 <td th:text="${vote.id}"></td>
                 <td th:text="${vote.title}"></td>
 
-
                 <td>
-
-                    <a th:if="${reVoteableVotes.contains(vote)}" th:href="@{/vote/vote/{id}(id=${vote.id})}" class="text-warning">재투표 가능</a>
-                    <a th:if="${!reVoteableVotes.contains(vote)}" th:href="@{/vote/vote/{id}(id=${vote.id})}" class="btn btn-primary">투표</a>
+                    <span th:if="${member != null}">
+                        <span th:if="${reVoteableVotes.contains(vote)}">
+                            <form th:action="@{/vote/vote/{id}(id=${vote.id})}" method="get">
+                                <button type="submit" class="text-warning">재투표 가능</button>
+                            </form>
+                        </span>
+                        <span th:if="${!reVoteableVotes.contains(vote)}">
+                            <form th:action="@{/vote/vote/{id}(id=${vote.id})}" method="get">
+                                <button type="submit" class="btn btn-primary">투표</button>
+                            </form>
+                        </span>
+                    </span>
                 </td>
-
 
                 <td th:if="${vote.member.id == member.id}">
-                    <a th:href="@{/vote/delete/{id}(id=${vote.id})}">삭제</a>
+                    <form th:action="@{/vote/delete/{id}(id=${vote.id})}" method="get">
+                        <button type="submit" class="btn btn-danger">삭제</button>
+                    </form>
                 </td>
 
-
                 <td>
-                    <a th:href="@{/vote/result/{id}(id=${vote.id})}">투표 결과</a>
+                    <form th:action="@{/vote/result/{id}(id=${vote.id})}" method="get">
+                        <button type="submit">투표 결과</button>
+                    </form>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-
     <div class="create-poll">
         <button type="button" onclick="location.href='/vote/create'">투표 작성</button>
     </div>
-
 
     <div class="logout">
         <button type="button" onclick="location.href='/'">로그아웃</button>

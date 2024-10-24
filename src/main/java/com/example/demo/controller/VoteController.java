@@ -83,6 +83,7 @@ public class VoteController {
         Member member = (Member) httpSession.getAttribute("loginMember");
         List<Item> items = itemRepository.findAll();
         List<MemberVote> memberVotes = memberVoteRepository.findAll();
+
         if (member != null) {
 
             model.addAttribute("member", member);
